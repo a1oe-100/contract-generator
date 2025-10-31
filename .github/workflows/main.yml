@@ -25,3 +25,15 @@ jobs:
 
       - name: Run tests
         run: pytest -v
+
+          docs:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install mkdocs mkdocs-material
+      - run: mkdocs build
+
